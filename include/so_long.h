@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 05:40:36 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/10/12 07:03:30 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/10/21 06:00:25 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <X11/keysym.h>
 # include <X11/X.h>
 # include <X11/Xlib.h>
+# include <stdlib.h>
 
 typedef struct s_program
 {
@@ -32,6 +33,23 @@ typedef struct s_program
 	int		height;
 }	t_program;
 
-int	main();
+typedef struct s_vector
+{
+	int	x;
+	int	y;
+}	t_vector;
+
+typedef struct s_image
+{
+	void		*ptr;
+	t_vector	size;
+	char		*pixels;
+	int			bits;
+	int			line;
+	int			endian;
+}	t_image;
+
+t_image	ft_new_sprite(void *mlx, char *path);
+void	*create_image(void *mlx, void *window);
 
 #endif

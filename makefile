@@ -1,7 +1,8 @@
 # *======== SOURCES ========*
 
 SRCS_1	=	\
-			so_long.c
+			so_long.c		\
+			image_manip.c
 			
 
 SRCSD	= srcs/
@@ -28,7 +29,7 @@ NAME_1	= so_long
 CC		= clang
 RM		= rm -rf
 
-CFLAGS	= -g -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror
 
 # *======== RULES ========*
 
@@ -40,7 +41,7 @@ all:		${NAME_1}
 ${NAME_1}:	${OBJS_1}
 					make -C ${MLX_DIR}
 					make -C ${PRINTF_DIR}
-			${CC} ${INCPRINTF} ${INCMLX} ${INC} ${CFLAGS} ${OBJS_1} ${PRINTF_FLAGS} ${MLX_FLAGS} -o ${NAME_1}
+			${CC} ${CFLAGS} ${INCPRINTF} ${INCMLX} ${INC} ${OBJS_1} ${PRINTF_FLAGS} ${MLX_FLAGS} -o ${NAME_1}
 
 clean:
 			${RM} ${OBJS_1}
