@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 05:40:36 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/10/21 06:00:25 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/10/28 16:27:30 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@
 # include <X11/X.h>
 # include <X11/Xlib.h>
 # include <stdlib.h>
+
+# define BUFFER_SIZE 1024
+# define WALL "./assets/tree.xpm"
+# define GROUND "./assets/ground.xpm"
 
 typedef struct s_program
 {
@@ -50,6 +54,13 @@ typedef struct s_image
 }	t_image;
 
 t_image	ft_new_sprite(void *mlx, char *path);
+char	*out(char *line, char *buffer, int read_status);
+char	*ft_strnjoin_gnl(char *line, char *buffer);
+char	*resizer(char *buffer);
+char	*get_map(int fd);
+char	*ft_strdup_gnl(char *s1);
 void	*create_image(void *mlx, void *window);
+int		end_of_line(char *buffer);
+int		check_map(char *path);
 
 #endif

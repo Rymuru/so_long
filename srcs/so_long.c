@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 03:08:59 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/10/21 06:03:42 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/10/28 11:25:44 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	main()
 	x.name = "so_long";
 	x.mlx_pointer = mlx_init();
 	x.window = mlx_new_window(x.mlx_pointer, x.width, x.height, x.name);
+	check_map("./maps/small_map.ber");
 	create_image(x.mlx_pointer, x.window);
 	mlx_hook(x.window, 33, 1L << 17, &close_map, &x);
 	mlx_loop(x.mlx_pointer);

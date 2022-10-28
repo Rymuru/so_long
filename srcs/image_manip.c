@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 17:13:51 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/10/21 06:10:02 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/10/28 16:06:53 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*create_image(void *mlx, void *window)
 
 	x_pos = 0;
 	y_pos = 0;
-	img = ft_new_sprite(mlx, "./assets/tree_cube.xpm");
+	img = ft_new_sprite(mlx, "./assets/tree.xpm");
 	mlx_put_image_to_window(mlx, window, img.ptr, x_pos, y_pos);
 	return (img.ptr);
 }

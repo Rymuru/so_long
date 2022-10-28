@@ -1,8 +1,10 @@
 # *======== SOURCES ========*
 
 SRCS_1	=	\
-			so_long.c		\
-			image_manip.c
+			so_long.c				\
+			image_manip.c			\
+			notice_reading.c		\
+			notice_reading_utils.c
 			
 
 SRCSD	= srcs/
