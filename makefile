@@ -1,6 +1,7 @@
 # *======== SOURCES ========*
 
 SRCS_1	=	\
+			events.c				\
 			so_long.c				\
 			image_manip.c			\
 			notice_reading.c		\

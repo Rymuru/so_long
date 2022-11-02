@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 03:08:59 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/11/02 16:30:53 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/11/02 19:37:57 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,19 @@
 	x->window.img.adr = NULL;
 }*/
 
-void	free_ptr(t_program *x)
+void	free_ptr(t_program *p)
 {
-	if (x->mlx_pointer)
+	if (p->mlx_p)
 	{
-		if (x->window)
+		if (p->window)
 		{
 			/*if (x->window.img.img)
 				free_image(g);*/
-			mlx_destroy_window(x->mlx_pointer, x->window);
+			mlx_destroy_window(p->mlx_p, p->window);
 		}
-		mlx_destroy_display(x->mlx_pointer);
-		free(x->mlx_pointer);
-		x->mlx_pointer = NULL;
+		mlx_destroy_display(p->mlx_p);
+		free(p->mlx_p);
+		p->mlx_p = NULL;
 	}
 }
 
@@ -43,16 +43,15 @@ int	close_map(t_program *x)
 
 int	main()
 {
-	t_program	x;
-	t_vector	map_size;
-	char		**map;
+	t_data		x;
 
-	map = check_map("./maps/small_map.ber");
-	map_size = window_size(map);
-	x.name = "so_long";
-	x.mlx_pointer = mlx_init();
-	x.window = mlx_new_window(x.mlx_pointer, map_size.y, map_size.x, x.name);
-	create_map(x.mlx_pointer, x.window, map);
-	mlx_hook(x.window, 33, 1L << 17, &close_map, &x);
-	mlx_loop(x.mlx_pointer);
+	x.map = check_map("./maps/small_map.ber");
+	x.size = window_size(x.map);
+	x.p.name = "so_long";
+	x.p.mlx_p = mlx_init();
+	x.p.window = mlx_new_window(x.p.mlx_p, x.size.y, x.size.x, x.p.name);
+	create_map(x.p.mlx_p, x.p.window, x.map);
+	mlx_hook(x.p.window, 33, 1L << 17, &close_map, &x.p);
+	mlx_key_hook(x.p.window, &events, &x);
+	mlx_loop(x.p.mlx_p);
 }

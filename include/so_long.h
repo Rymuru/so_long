@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 05:40:36 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/11/02 17:27:17 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/11/02 19:25:10 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 
 typedef struct s_program
 {
-	void	*mlx_pointer;
+	void	*mlx_p;
 	void	*window;
 	char	*name;
 	int		width;
@@ -57,8 +57,17 @@ typedef struct s_image
 	int			endian;
 }	t_image;
 
+typedef struct s_data
+{
+	char		**map;
+	t_program	p;
+	t_vector	size;
+	t_image		img;
+}	t_data;
+
 t_image		ft_new_sprite(void *mlx, char *path);
 t_vector	window_size(char **map);
+t_vector	player(char **map);
 
 char		*out(char *line, char *buffer, int read_status);
 char		*ft_strnjoin_gnl(char *line, char *buffer);
@@ -67,9 +76,15 @@ char		*get_map(int fd);
 char		*ft_strdup_gnl(char *s1);
 char		**check_map(char *path);
 
+void		move_up(t_data data);
+void		move_left(t_data data);
+void		move_down(t_data data);
+void		move_right(t_data data);
+void		free_ptr(t_program *x);
 void		create_map(void *mlx, void *windows, char **map);
 void		*create_image(void *mlx, void *window, t_vector pos, char *path);
 
 int			end_of_line(char *buffer);
+int			events(int key, t_data *data);
 
 #endif

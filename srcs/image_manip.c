@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 17:13:51 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/11/02 17:28:45 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/11/02 19:29:23 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,26 @@ t_vector	window_size(char **map)
 	map_size.x *= 100;
 	map_size.y *= 100;
 	return (map_size);
+}
+
+t_vector	player(char **map)
+{
+	t_vector	pos;
+
+	pos.x = 0;
+	pos.y = 0;
+	while (map[pos.x])
+	{
+		while (map[pos.x][pos.y])
+		{
+			if (map[pos.x][pos.y] == 'P')
+			{
+				return (pos);
+			}
+			++pos.y;
+		}
+		pos.y = 0;
+		++pos.x;
+	}
+	return (pos);
 }
