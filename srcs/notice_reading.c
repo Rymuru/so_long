@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 18:26:24 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/10/28 16:06:21 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/11/02 15:28:34 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@
 /*need to check if .ber*/
 /*need to check if map is valid*/
 
-int	check_map(char *path)
+char	**check_map(char *path)
 {
-	int 	i;
+	int		i;
 	int		file;
 	char	**map;
 
 	i = 0;
 	file = open(path, O_RDONLY);
-	map = malloc(sizeof(char*) * 20);
+	map = malloc(sizeof(char *) * 20);
 	map[i] = get_map(file);
 	while (map[i] != NULL)
 	{
@@ -33,7 +33,7 @@ int	check_map(char *path)
 		map[i] = get_map(file);
 	}
 	close(file);
-	return (0);
+	return (map);
 }
 
 char	*out(char *line, char *buffer, int read_status)

@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 05:40:36 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/10/28 16:27:30 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/11/02 17:27:17 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@
 # define BUFFER_SIZE 1024
 # define WALL "./assets/tree.xpm"
 # define GROUND "./assets/ground.xpm"
+# define RED "./assets/red_side.xpm"
+# define EXIT "./assets/house-0.xpm"
+# define KEY "./assets/key.xpm"
+
 
 typedef struct s_program
 {
@@ -53,14 +57,19 @@ typedef struct s_image
 	int			endian;
 }	t_image;
 
-t_image	ft_new_sprite(void *mlx, char *path);
-char	*out(char *line, char *buffer, int read_status);
-char	*ft_strnjoin_gnl(char *line, char *buffer);
-char	*resizer(char *buffer);
-char	*get_map(int fd);
-char	*ft_strdup_gnl(char *s1);
-void	*create_image(void *mlx, void *window);
-int		end_of_line(char *buffer);
-int		check_map(char *path);
+t_image		ft_new_sprite(void *mlx, char *path);
+t_vector	window_size(char **map);
+
+char		*out(char *line, char *buffer, int read_status);
+char		*ft_strnjoin_gnl(char *line, char *buffer);
+char		*resizer(char *buffer);
+char		*get_map(int fd);
+char		*ft_strdup_gnl(char *s1);
+char		**check_map(char *path);
+
+void		create_map(void *mlx, void *windows, char **map);
+void		*create_image(void *mlx, void *window, t_vector pos, char *path);
+
+int			end_of_line(char *buffer);
 
 #endif

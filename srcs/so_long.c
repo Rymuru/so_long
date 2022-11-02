@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 03:08:59 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/10/28 11:25:44 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/11/02 16:30:53 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,15 @@ int	close_map(t_program *x)
 int	main()
 {
 	t_program	x;
+	t_vector	map_size;
+	char		**map;
 
-	x.width = 1000;
-	x.height = 1000;
+	map = check_map("./maps/small_map.ber");
+	map_size = window_size(map);
 	x.name = "so_long";
 	x.mlx_pointer = mlx_init();
-	x.window = mlx_new_window(x.mlx_pointer, x.width, x.height, x.name);
-	check_map("./maps/small_map.ber");
-	create_image(x.mlx_pointer, x.window);
+	x.window = mlx_new_window(x.mlx_pointer, map_size.y, map_size.x, x.name);
+	create_map(x.mlx_pointer, x.window, map);
 	mlx_hook(x.window, 33, 1L << 17, &close_map, &x);
 	mlx_loop(x.mlx_pointer);
 }
