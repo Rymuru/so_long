@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 01:50:23 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/11/05 05:42:54 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/11/05 06:21:05 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,58 @@ int	find_things(char **map, char c)
 
 int try_hard(char **map, int collectibles, int ex, t_vector player)
 {
+	if (map[player.x][player.y] == 'C')
+	{
+		map[player.x][player.y] == '0';
+		--collectibles;
+	}
+	if (map[player.x][player.y] == 'E')
+	{
+		map[player.x][player.y] == '0';
+		--ex;
+	}
 	if (collectibles == 0 && ex == 0)
 	{
 		return 0;
 	}
-	if ()
+	if (path(map, player) == 0)
+		return (1);
+	if (path(map, player) == 1)
+		map[player.x][player.y] = '1';
+	if (map[player.x][player.y + 1] != 1)
+	{
+		++player.y;
+		try_hard(map, collectibles, ex, player);
+	}
+	else if (map[player.x + 1][player.y])
+	{
+		++player.x;
+		try_hard(map, collectibles, ex, player);
+	}
+	else if (map[player.x][player.y - 1])
+	{
+		--player.y;
+		try_hard(map, collectibles, ex, player);
+	}
+	else if (map[player.x - 1][player.y])
+	{
+		--player.x;
+		try_hard(map, collectibles, ex, player);
+	}
+}
+
+int check_pos(char **map, t_vector player)
+{
+	int path;
+
+	path = 0;
+	if (map[player.x][player.y + 1] != 1)
+		++path;
+	if (map[player.x + 1][player.y])
+		++path;
+	if (map[player.x][player.y - 1])
+		++path;
+	if (map[player.x - 1][player.y])
+		++path;
+	return (path);
 }

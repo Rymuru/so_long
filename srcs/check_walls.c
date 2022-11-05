@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 03:26:46 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/11/05 03:32:30 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/11/05 06:04:34 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	check_walls_column(char **map, int x, int y)
 	i = 0;
 	while (i < x)
 	{
-		if (map[i][x] != '1')
+		if (map[i][y] != '1')
 			return (1);
 		++i;
 	}
