@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 01:50:23 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/11/05 03:38:32 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/11/05 05:42:54 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,13 @@ int	find_things(char **map, char c)
 		++pos.x;
 	}
 	return (things);
+}
+
+int try_hard(char **map, int collectibles, int ex, t_vector player)
+{
+	if (collectibles == 0 && ex == 0)
+	{
+		return 0;
+	}
+	if ()
 }
