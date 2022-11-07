@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 17:13:51 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/11/02 19:29:23 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/11/07 14:42:24 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	create_map(void *mlx, void *windows, char **map)
 
 	pos.x = 0;
 	pos.y = 0;
-
 	while (map[pos.x])
 	{
 		while (map[pos.x][pos.y])
@@ -26,7 +25,7 @@ void	create_map(void *mlx, void *windows, char **map)
 			if (map[pos.x][pos.y] == '1')
 				create_image(mlx, windows, pos, WALL);
 			else if (map[pos.x][pos.y] == 'P')
-				create_image(mlx, windows, pos, RED);
+				create_image(mlx, windows, pos, RED_RIGHT);
 			else if (map[pos.x][pos.y] == 'E')
 				create_image(mlx, windows, pos, EXIT);
 			else if (map[pos.x][pos.y] == 'C')
@@ -76,7 +75,7 @@ t_vector	window_size(char **map)
 	return (map_size);
 }
 
-t_vector	player(char **map)
+t_vector	find_player(char **map)
 {
 	t_vector	pos;
 

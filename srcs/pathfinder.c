@@ -6,30 +6,23 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 01:50:23 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/11/05 06:21:05 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/11/07 18:47:13 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_chuck(char **map)
+void	valid_path(char **copy, int x, int y)
 {
-	int collectibles;
-	char **copy;
-	t_vector player;
-
-	copy = map;
-	if (find_things(copy, 'P') != 1)
-		return (1);
-	if (find_things(copy, 'E') != 1)
-		return (1);
-	if (find_things(copy, 'C') < 1)
-		return (1);
-	player = ft_player(map);
-	collectibles = find_things(map, 'C');
-	if (nice_walled_rectangle == 1)
-		return (1);
-	return (0);
+	copy[x][y] = 'P';
+	if (copy[y][x + 1] == 'C' || copy[y][x + 1] == '0')
+		valid_path(copy, x + 1, y);
+	if (copy[y][x - 1] == 'C' || copy[y][x - 1] == '0')
+		valid_path(copy, x - 1, y);
+	if (copy[y + 1][x] == 'C' || copy[y + 1][x] == '0')
+		valid_path(copy, x, y + 1);
+	if (copy[y - 1][x] == 'C' || copy[y - 1][x] == '0')
+		valid_path(copy, x, y - 1);
 }
 
 int	find_things(char **map, char c)
@@ -56,60 +49,73 @@ int	find_things(char **map, char c)
 	return (things);
 }
 
-int try_hard(char **map, int collectibles, int ex, t_vector player)
+char	*ft_strdup(char *s1)
 {
-	if (map[player.x][player.y] == 'C')
+	int		i;
+	int		len;
+	char	*str;
+
+	i = 0;
+	len = ft_strlen(s1) + 1;
+	if (i - 1 == 0)
+		return (NULL);
+	str = malloc(len * sizeof(const char));
+	if (str == NULL)
+		return (NULL);
+	while (s1[i])
 	{
-		map[player.x][player.y] == '0';
-		--collectibles;
+		str[i] = s1[i];
+		i++;
 	}
-	if (map[player.x][player.y] == 'E')
-	{
-		map[player.x][player.y] == '0';
-		--ex;
-	}
-	if (collectibles == 0 && ex == 0)
-	{
-		return 0;
-	}
-	if (path(map, player) == 0)
-		return (1);
-	if (path(map, player) == 1)
-		map[player.x][player.y] = '1';
-	if (map[player.x][player.y + 1] != 1)
-	{
-		++player.y;
-		try_hard(map, collectibles, ex, player);
-	}
-	else if (map[player.x + 1][player.y])
-	{
-		++player.x;
-		try_hard(map, collectibles, ex, player);
-	}
-	else if (map[player.x][player.y - 1])
-	{
-		--player.y;
-		try_hard(map, collectibles, ex, player);
-	}
-	else if (map[player.x - 1][player.y])
-	{
-		--player.x;
-		try_hard(map, collectibles, ex, player);
-	}
+	str[i] = '\0';
+	return (str);
 }
 
-int check_pos(char **map, t_vector player)
+char	**copy_map(char **map)
 {
-	int path;
+	int		x;
+	int		y;
+	char	**copy;
 
-	path = 0;
-	if (map[player.x][player.y + 1] != 1)
-		++path;
-	if (map[player.x + 1][player.y])
-		++path;
-	if (map[player.x][player.y - 1])
-		++path;
-	if (map[player.x - 1][player.y])
-		++path;
-	return (path);
+	x = 0;
+	y = 0;
+	while (map[x])
+		++x;
+	++x;
+	copy = malloc(x * sizeof(char *));
+	x = 0;
+	while (map[x])
+	{
+		/*copy[x] = malloc((ft_strlen(map[x]) + 1) * sizeof(char));
+		while (map[x][y])
+		{
+			copy[x][y] = map[x][y];
+			++y;
+		}
+		copy[x][y] = '\0';
+		y = 0;*/
+		copy[x] = ft_strdup(map[x]);
+		ft_printf("%s", copy[x]);
+		++x;
+	}
+	copy[x] = NULL;
+	return (copy);
+}
+
+int	ft_chuck(char **map)
+{
+	char		**copy;
+	t_vector	player;
+
+	if (find_things(map, 'P') != 1 || find_things(map, 'E') != 1
+		|| find_things(map, 'C') < 1)
+		return (1);
+	//if (nice_walled_rectangle(map) == 1)
+	//	return (1);
+	copy = copy_map(map);
+	player = find_player(map);
+	valid_path(copy, player.x, player.y);
+	if (find_things(copy, 'C') > 0 || find_things(copy, 'E') > 0)
+		return (1);
+	return (0);
 }

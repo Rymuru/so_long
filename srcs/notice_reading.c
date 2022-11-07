@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 18:26:24 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/11/02 15:28:34 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/11/07 17:25:18 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ char	**check_map(char *path)
 		i++;
 		map[i] = get_map(file);
 	}
+	write(1, "\n", 1);
 	close(file);
 	return (map);
 }

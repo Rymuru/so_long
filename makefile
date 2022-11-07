@@ -3,6 +3,8 @@
 SRCS_1	=	\
 			events.c				\
 			so_long.c				\
+			pathfinder.c			\
+			check_walls.c			\
 			image_manip.c			\
 			notice_reading.c		\
 			notice_reading_utils.c
@@ -32,7 +34,7 @@ NAME_1	= so_long
 CC		= clang
 RM		= rm -rf
 
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -g3 -Wall -Wextra -Werror
 
 # *======== RULES ========*
 

@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 05:40:36 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/11/02 19:25:10 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/11/07 17:27:29 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@
 # define BUFFER_SIZE 1024
 # define WALL "./assets/tree.xpm"
 # define GROUND "./assets/ground.xpm"
-# define RED "./assets/red_side.xpm"
+# define RED_LEFT "./assets/red-left.xpm"
+# define RED_RIGHT "./assets/red-right.xpm"
 # define EXIT "./assets/house-0.xpm"
 # define KEY "./assets/key.xpm"
-
 
 typedef struct s_program
 {
@@ -59,6 +59,7 @@ typedef struct s_image
 
 typedef struct s_data
 {
+	int			move;
 	char		**map;
 	t_program	p;
 	t_vector	size;
@@ -67,7 +68,7 @@ typedef struct s_data
 
 t_image		ft_new_sprite(void *mlx, char *path);
 t_vector	window_size(char **map);
-t_vector	player(char **map);
+t_vector	find_player(char **map);
 
 char		*out(char *line, char *buffer, int read_status);
 char		*ft_strnjoin_gnl(char *line, char *buffer);
@@ -76,15 +77,19 @@ char		*get_map(int fd);
 char		*ft_strdup_gnl(char *s1);
 char		**check_map(char *path);
 
-void		move_up(t_data data);
-void		move_left(t_data data);
-void		move_down(t_data data);
-void		move_right(t_data data);
+void		move_up(t_data *data);
+void		move_left(t_data *data);
+void		move_down(t_data *data);
+void		move_right(t_data *data);
 void		free_ptr(t_program *x);
 void		create_map(void *mlx, void *windows, char **map);
 void		*create_image(void *mlx, void *window, t_vector pos, char *path);
 
+int			ft_chuck(char **map);
+int			close_map(t_data *data);
 int			end_of_line(char *buffer);
 int			events(int key, t_data *data);
+int			find_things(char **map, char c);
+int			nice_walled_rectangle(char **map);
 
 #endif
