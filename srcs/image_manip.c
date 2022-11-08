@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 17:13:51 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/11/07 14:42:24 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/11/08 18:24:46 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,14 @@ void	create_map(void *mlx, void *windows, char **map)
 	}
 }
 
-void	*create_image(void *mlx, void *window, t_vector pos, char *path)
+void	create_image(void *mlx, void *window, t_vector pos, char *path)
 {
 	t_image	img;
 
 	img = ft_new_sprite(mlx, path);
 	mlx_put_image_to_window(mlx, window, img.ptr, pos.y * 100, pos.x * 100);
-	return (img.ptr);
+	free_image(mlx, img);
+	//return (img.ptr);
 }
 
 t_image	ft_new_sprite(void *mlx, char *path)

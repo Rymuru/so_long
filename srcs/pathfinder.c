@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 01:50:23 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/11/08 15:50:16 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/11/08 18:53:22 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,16 +86,7 @@ char	**copy_map(char **map)
 	x = 0;
 	while (map[x])
 	{
-		/*copy[x] = malloc((ft_strlen(map[x]) + 1) * sizeof(char));
-		while (map[x][y])
-		{
-			copy[x][y] = map[x][y];
-			++y;
-		}
-		copy[x][y] = '\0';
-		y = 0;*/
 		copy[x] = ft_strdup(map[x]);
-		ft_printf("%s", copy[x]);
 		++x;
 	}
 	copy[x] = NULL;
@@ -109,13 +100,24 @@ int	ft_chuck(char **map)
 
 	if (find_things(map, 'P') != 1 || find_things(map, 'E') != 1
 		|| find_things(map, 'C') < 1)
+	{
+		free_map(map);
 		return (1);
+	}
 	//if (nice_walled_rectangle(map) == 1)
+	//{
+	//	free_map(map);
 	//	return (1);
+	//}
 	copy = copy_map(map);
 	player = find_player(map);
 	valid_path(copy, player.x, player.y);
 	if (find_things(copy, 'C') > 0 || find_things(copy, 'E') > 0)
+	{
+		free_map(map);
+		free_map(copy);
 		return (1);
+	}
+	free_map(copy);
 	return (0);
 }

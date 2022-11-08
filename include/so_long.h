@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 05:40:36 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/11/07 17:27:29 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/11/08 18:37:49 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,10 @@ void		move_left(t_data *data);
 void		move_down(t_data *data);
 void		move_right(t_data *data);
 void		free_ptr(t_program *x);
+void		free_map(char **map);
+void		free_image(void *mlx, t_image img);
 void		create_map(void *mlx, void *windows, char **map);
-void		*create_image(void *mlx, void *window, t_vector pos, char *path);
+void		create_image(void *mlx, void *window, t_vector pos, char *path);
 
 int			ft_chuck(char **map);
 int			close_map(t_data *data);

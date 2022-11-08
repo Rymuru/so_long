@@ -6,6 +6,7 @@ SRCS_1	=	\
 			pathfinder.c			\
 			check_walls.c			\
 			image_manip.c			\
+			memory_free.c			\
 			notice_reading.c		\
 			notice_reading_utils.c
 			
