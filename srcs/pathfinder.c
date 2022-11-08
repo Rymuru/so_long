@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 01:50:23 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/11/07 18:47:13 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/11/08 15:50:16 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void	valid_path(char **copy, int x, int y)
 {
 	copy[x][y] = 'P';
-	if (copy[y][x + 1] == 'C' || copy[y][x + 1] == '0')
+	if (copy[x + 1][y] == 'C' || copy[x + 1][y] == '0' || copy[x + 1][y] == 'E')
 		valid_path(copy, x + 1, y);
-	if (copy[y][x - 1] == 'C' || copy[y][x - 1] == '0')
+	if (copy[x - 1][y] == 'C' || copy[x - 1][y] == '0' || copy[x - 1][y] == 'E')
 		valid_path(copy, x - 1, y);
-	if (copy[y + 1][x] == 'C' || copy[y + 1][x] == '0')
+	if (copy[x][y + 1] == 'C' || copy[x][y + 1] == '0' || copy[x][y + 1] == 'E')
 		valid_path(copy, x, y + 1);
-	if (copy[y - 1][x] == 'C' || copy[y - 1][x] == '0')
+	if (copy[x][y - 1] == 'C' || copy[x][y - 1] == '0' || copy[x][y - 1] == 'E')
 		valid_path(copy, x, y - 1);
 }
 
