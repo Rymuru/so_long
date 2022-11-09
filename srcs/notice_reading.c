@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 18:26:24 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/11/09 14:11:12 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/11/09 18:20:49 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,9 @@ char	**read_map(char *path)
 	map[i] = get_map(file);
 	while (map[i] != NULL)
 	{
-		ft_printf("%s", map[i]);
 		i++;
 		map[i] = get_map(file);
 	}
-	write(1, "\n", 1);
 	close(file);
 	return (map);
 }

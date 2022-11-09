@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 01:50:23 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/11/09 14:38:44 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/11/09 18:29:45 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,11 +104,11 @@ int	ft_chuck(char **map)
 		free_map(map);
 		return (1);
 	}
-	//if (nice_walled_rectangle(map) == 1)
-	//{
-	//	free_map(map);
-	//	return (1);
-	//}
+	if (nice_walled_rectangle(map) == 1 || seems_weird(map) == 1)
+	{
+		free_map(map);
+		return (1);
+	}
 	copy = copy_map(map);
 	player = find_player(map);
 	valid_path(copy, player.x, player.y);

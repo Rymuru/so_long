@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 05:40:36 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/11/09 15:21:11 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/11/09 18:30:37 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void		create_image(void *mlx, void *window, t_vector pos, char *path);
 
 int			ft_chuck(char **map);
 int			close_map(t_data *data);
+int			seems_weird(char **map);
 int			end_of_line(char *buffer);
 int			events(int key, t_data *data);
 int			find_things(char **map, char c);
