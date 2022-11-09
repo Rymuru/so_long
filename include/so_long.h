@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 05:40:36 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/11/08 18:37:49 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/11/09 15:21:11 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char		*ft_strnjoin_gnl(char *line, char *buffer);
 char		*resizer(char *buffer);
 char		*get_map(int fd);
 char		*ft_strdup_gnl(char *s1);
-char		**check_map(char *path);
+char		**read_map(char *path);
 
 void		move_up(t_data *data);
 void		move_left(t_data *data);

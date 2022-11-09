@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 03:26:46 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/11/08 18:03:48 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/11/09 14:37:05 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,24 +54,18 @@ int	check_walls_column(char **map, int x, int y)
 int	nice_walled_rectangle(char **map)
 {
 	t_vector	size;
-	t_vector	pos;
 
-	pos.x = 0;
-	pos.y = 0;
 	size.x = 0;
 	size.y = ft_strlen(map[0]);
-	while (map[pos.x])
+	while (map[size.x])
 	{
-		while (map[pos.x][pos.y])
-		{
-			++pos.y;
-		}
-		if (pos.y > size.y || pos.y < size.y)
+		if (ft_strlen(map[size.x]) != size.y && map[size.x + 1])
 			return (1);
-		pos.y = 0;
-		++pos.x;
+		else if (ft_strlen(map[size.x] + 1) != size.y && !map[size.x + 1])
+			return (1);
+		ft_printf("line %d\n", size.x);
+		++size.x;
 	}
-	size.x = pos.x;
 	//if (check_walls_line(map, size.x, 0) == 1)
 		//return (1);
 	//if (check_walls_column(map, size.x, size.y) == 1)
