@@ -36,7 +36,7 @@ NAME_1	= so_long
 CC		= clang
 RM		= rm -rf
 
-CFLAGS	= -g3 -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror
 
 # *======== RULES ========*
 
