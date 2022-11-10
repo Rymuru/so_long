@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 01:50:23 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/11/09 18:29:45 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/11/10 20:39:26 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,9 @@ char	*ft_strdup(char *s1)
 char	**copy_map(char **map)
 {
 	int		x;
-	int		y;
 	char	**copy;
 
 	x = 0;
-	y = 0;
 	while (map[x])
 		++x;
 	++x;
