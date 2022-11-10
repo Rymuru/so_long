@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 05:40:36 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/11/09 18:30:37 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/11/10 18:47:14 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ char		*out(char *line, char *buffer, int read_status);
 char		*ft_strnjoin_gnl(char *line, char *buffer);
 char		*resizer(char *buffer);
 char		*get_map(int fd);
+char		*ft_itoa(int n);
 char		*ft_strdup_gnl(char *s1);
 char		**read_map(char *path);
 

@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:39:41 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/11/09 18:19:31 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/11/10 18:57:44 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 int	events(int key, t_data *data)
 {
+	char		*steps;
+	t_vector	pos;
+
+	pos.x = 0;
+	pos.y = 0;
 	if (key == XK_Escape)
 	{
 		close_map(data);
@@ -27,6 +32,10 @@ int	events(int key, t_data *data)
 		move_down(data);
 	if (key == 'd' || key == 65363)
 		move_right(data);
+	create_image(data->p.mlx_p, data->p.window, pos, WALL);
+	steps = ft_itoa(data->move);
+	mlx_string_put(data->p.mlx_p, data->p.window, 10, 10, 0xffffff, steps);
+	free(steps);
 	if (find_things(data->map, 'C') == 0 && find_things(data->map, 'E') == 0)
 		close_map(data);
 	return (0);

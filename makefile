@@ -1,6 +1,7 @@
 # *======== SOURCES ========*
 
 SRCS_1	=	\
+			utils.c					\
 			events.c				\
 			so_long.c				\
 			pathfinder.c			\

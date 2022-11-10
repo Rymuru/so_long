@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 18:26:24 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/11/09 18:20:49 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/11/10 18:22:25 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,21 @@ char	**read_map(char *path)
 
 	i = 0;
 	file = open(path, O_RDONLY);
-	map = malloc(sizeof(char *) * 20);
+	map = malloc(sizeof(char *) * 22);
+	if (!map)
+		return (NULL);
 	map[i] = get_map(file);
-	while (map[i] != NULL)
+	while (map[i++] != NULL)
 	{
-		i++;
+		if (i > 21)
+		{
+			while (--i >= 0)
+			{
+				free(map[i]);
+			}
+			free(map);
+			return (NULL);
+		}
 		map[i] = get_map(file);
 	}
 	close(file);

@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 03:26:46 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/11/09 18:30:00 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/11/10 17:53:34 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,8 @@ int	nice_walled_rectangle(char **map)
 		++size.x;
 	}
 	--size.x;
+	if (size.x > 20 || size.y > 38)
+		return (1);
 	if (check_walls_line(map, size.x, 0) == 1)
 		return (1);
 	if (check_walls_column(map, size.x, size.y) == 1)
