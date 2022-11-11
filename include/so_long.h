@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 05:40:36 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/11/10 18:47:14 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/11/11 16:24:14 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <fcntl.h>
 # include <math.h>
 # include <X11/keysym.h>
+# include <sys/types.h>
+# include <sys/stat.h>
 # include <X11/X.h>
 # include <X11/Xlib.h>
 # include <stdlib.h>

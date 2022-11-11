@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 03:08:59 by bcoenon           #+#    #+#             */
-/*   Updated: 2022/11/10 18:33:48 by bcoenon          ###   ########.fr       */
+/*   Updated: 2022/11/11 16:21:31 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,24 @@ int	check_name(char *name)
 	i = ft_strlen(name) - 1;
 	if (i < 5)
 		return (1);
-	if (name[i] != 'r')
+	if (name[i--] != 'r')
 		return (1);
-	--i;
-	if (name[i] != 'e')
+	if (name[i--] != 'e')
 		return (1);
-	--i;
-	if (name[i] != 'b')
+	if (name[i--] != 'b')
 		return (1);
-	--i;
 	if (name[i] != '.')
 		return (1);
-	fd = open(name, O_DIRECTORY);
-	close(fd);
-	if (fd != -1)
+	fd = open(name, O_RDONLY);
+	if (fd == -1)
 		return (1);
+	close(fd);
+	fd = open(name, O_DIRECTORY);
+	if (fd != -1)
+	{
+		close(fd);
+		return (1);
+	}
 	return (0);
 }
 
@@ -64,13 +67,16 @@ int	check_assets(char *path)
 	int	fd;
 
 	fd = open(path, O_RDONLY);
-	close(fd);
 	if (fd == -1)
 		return (1);
+	else
+		close(fd);
 	fd = open(path, O_DIRECTORY);
-	close(fd);
 	if (fd != -1)
+	{
+		close(fd);
 		return (1);
+	}
 	return (0);
 }
 
